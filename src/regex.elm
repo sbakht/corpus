@@ -4,6 +4,7 @@ import Html exposing (text, div, p, span, Html, li, ul)
 import List exposing (map)
 import String exposing (concat)
 import Regex exposing (..)
+import Maybe exposing (withDefault)
 import Parser exposing (Parser)
 
 
@@ -11,8 +12,15 @@ type Msg
     = Msg
 
 
-lis : Regex
-lis =
+type alias Word =
+    { location : String
+    , transliteration : String
+    , translation : String
+    }
+
+
+wordRegex : Regex
+wordRegex =
     regex <|
         concat <|
             [ "<td class=\"c1\"><span class=\"l\">(.+?)</span>.*?<i class=\"ab\">(.+?)</i></td>"
@@ -20,48 +28,53 @@ lis =
             ]
 
 
-
---<td class="c1"><span class="l">(7:57:14)</span> <i class="ab">suq'nāhu</i></td><
-
-
-items : List Match
-items =
-    find All lis data
+matches : List Match
+matches =
+    find All wordRegex data
 
 
-matchText : List Match -> List String
-matchText m =
-    map .match m
+parse : List Match -> List (List (Maybe String))
+parse =
+    map .submatches
 
 
-matchSubMatches : List Match -> List (List (Maybe String))
-matchSubMatches m =
-    map .submatches m
+mkWord : List String -> Word
+mkWord s =
+    case s of
+        [ loc, lit, tran ] ->
+            Word loc lit tran
+
+        otherwise ->
+            Word "" "" ""
 
 
-line : List (Maybe String) -> Html Msg
-line xs =
-    let
-        go x =
-            case x of
-                Just x ->
-                    span [] [ text x ]
-
-                Nothing ->
-                    span [] []
-    in
-        li [] (map go xs)
+toWord : List (Maybe String) -> Word
+toWord xs =
+    mkWord (map (withDefault "") xs)
 
 
-lines : List (List (Maybe String)) -> List (Html Msg)
-lines xss =
-    map line xss
+
+--------------------------------------------------
+
+
+toSpan : String -> Html Msg
+toSpan x =
+    span [] [ text x ]
+
+
+printWord : Word -> Html Msg
+printWord w =
+    li [] [ span [] [ toSpan w.location, toSpan w.transliteration, toSpan w.translation ] ]
+
+
+printWords : List (List (Maybe String)) -> List (Html Msg)
+printWords =
+    map (printWord << toWord)
 
 
 main =
     div []
-        [ p [] [ text <| toString <| matchText items ]
-        , ul [] (lines (matchSubMatches items))
+        [ ul [] (printWords << parse <| matches)
         ]
 
 

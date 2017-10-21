@@ -8831,50 +8831,46 @@ var _elm_tools$parser$Parser$zeroOrMore = _elm_tools$parser$Parser$AtLeast(0);
 var _elm_tools$parser$Parser$oneOrMore = _elm_tools$parser$Parser$AtLeast(1);
 
 var _user$project$Main$data = '\n<table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(7:57:14)</span> <i class=\"ab\">suq\'nāhu</i></td><td class=\"c2\"><a name=\"(7:57:14)\" href=\"wordmorphology.jsp?location=(7:57:14)\">We drive them</a></td><td class=\"c3\"> حَتَّىٰ إِذَا أَقَلَّتْ سَحَابًا ثِقَالًا <span class=\"auu\">سُقْنَاهُ</span> لِبَلَدٍ مَيِّتٍ فَأَنْزَلْنَا بِهِ الْمَاءَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(8:6:7)</span> <i class=\"ab\">yusāqūna</i></td><td class=\"c2\"><a name=\"(8:6:7)\" href=\"wordmorphology.jsp?location=(8:6:7)\">they were driven</a></td><td class=\"c3\"> كَأَنَّمَا <span class=\"auu\">يُسَاقُونَ</span> إِلَى الْمَوْتِ وَهُمْ يَنْظُرُونَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(19:86:1)</span> <i class=\"ab\">wanasūqu</i></td><td class=\"c2\"><a name=\"(19:86:1)\" href=\"wordmorphology.jsp?location=(19:86:1)\">And We will drive</a></td><td class=\"c3\"> <span class=\"auu\">وَنَسُوقُ</span> الْمُجْرِمِينَ إِلَىٰ جَهَنَّمَ وِرْدًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(32:27:4)</span> <i class=\"ab\">nasūqu</i></td><td class=\"c2\"><a name=\"(32:27:4)\" href=\"wordmorphology.jsp?location=(32:27:4)\">drive</a></td><td class=\"c3\"> أَوَلَمْ يَرَوْا أَنَّا <span class=\"auu\">نَسُوقُ</span> الْمَاءَ إِلَى الْأَرْضِ الْجُرُزِ فَنُخْرِجُ بِهِ زَرْعًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(35:9:7)</span> <i class=\"ab\">fasuq\'nāhu</i></td><td class=\"c2\"><a name=\"(35:9:7)\" href=\"wordmorphology.jsp?location=(35:9:7)\">and We drive them</a></td><td class=\"c3\"> وَاللَّهُ الَّذِي أَرْسَلَ الرِّيَاحَ فَتُثِيرُ سَحَابًا <span class=\"auu\">فَسُقْنَاهُ</span> إِلَىٰ بَلَدٍ مَيِّتٍ</td></tr><tr><td class=\"c1\"><span class=\"l\">(39:71:1)</span> <i class=\"ab\">wasīqa</i></td><td class=\"c2\"><a name=\"(39:71:1)\" href=\"wordmorphology.jsp?location=(39:71:1)\">And (will) be driven</a></td><td class=\"c3\"> <span class=\"auu\">وَسِيقَ</span> الَّذِينَ كَفَرُوا إِلَىٰ جَهَنَّمَ زُمَرًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(39:73:1)</span> <i class=\"ab\">wasīqa</i></td><td class=\"c2\"><a name=\"(39:73:1)\" href=\"wordmorphology.jsp?location=(39:73:1)\">And (will) be driven</a></td><td class=\"c3\"> <span class=\"auu\">وَسِيقَ</span> الَّذِينَ اتَّقَوْا رَبَّهُمْ إِلَى الْجَنَّةِ زُمَرًا</td></tr></tbody></table>\n';
-var _user$project$Main$line = function (xs) {
-	var go = function (x) {
-		var _p0 = x;
-		if (_p0.ctor === 'Just') {
-			return A2(
+var _user$project$Main$toSpan = function (x) {
+	return A2(
+		_elm_lang$html$Html$span,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(x),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$printWord = function (w) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
 				_elm_lang$html$Html$span,
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text(_p0._0),
-					_1: {ctor: '[]'}
-				});
-		} else {
-			return A2(
-				_elm_lang$html$Html$span,
-				{ctor: '[]'},
-				{ctor: '[]'});
-		}
-	};
-	return A2(
-		_elm_lang$html$Html$p,
-		{ctor: '[]'},
-		A2(_elm_lang$core$List$map, go, xs));
+					_0: _user$project$Main$toSpan(w.location),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Main$toSpan(w.transliteration),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$toSpan(w.translation),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
 };
-var _user$project$Main$lines = function (xss) {
-	return A2(_elm_lang$core$List$map, _user$project$Main$line, xss);
-};
-var _user$project$Main$matchSubMatches = function (m) {
-	return A2(
-		_elm_lang$core$List$map,
-		function (_) {
-			return _.submatches;
-		},
-		m);
-};
-var _user$project$Main$matchText = function (m) {
-	return A2(
-		_elm_lang$core$List$map,
-		function (_) {
-			return _.match;
-		},
-		m);
-};
-var _user$project$Main$li = _elm_lang$core$Regex$regex(
+var _user$project$Main$parse = _elm_lang$core$List$map(
+	function (_) {
+		return _.submatches;
+	});
+var _user$project$Main$wordRegex = _elm_lang$core$Regex$regex(
 	_elm_lang$core$String$concat(
 		{
 			ctor: '::',
@@ -8885,7 +8881,31 @@ var _user$project$Main$li = _elm_lang$core$Regex$regex(
 				_1: {ctor: '[]'}
 			}
 		}));
-var _user$project$Main$items = A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Main$li, _user$project$Main$data);
+var _user$project$Main$matches = A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Main$wordRegex, _user$project$Main$data);
+var _user$project$Main$Word = F3(
+	function (a, b, c) {
+		return {location: a, transliteration: b, translation: c};
+	});
+var _user$project$Main$mkWord = function (s) {
+	var _p0 = s;
+	if ((((_p0.ctor === '::') && (_p0._1.ctor === '::')) && (_p0._1._1.ctor === '::')) && (_p0._1._1._1.ctor === '[]')) {
+		return A3(_user$project$Main$Word, _p0._0, _p0._1._0, _p0._1._1._0);
+	} else {
+		return A3(_user$project$Main$Word, '', '', '');
+	}
+};
+var _user$project$Main$toWord = function (xs) {
+	return _user$project$Main$mkWord(
+		A2(
+			_elm_lang$core$List$map,
+			_elm_lang$core$Maybe$withDefault(''),
+			xs));
+};
+var _user$project$Main$printWords = _elm_lang$core$List$map(
+	function (_p1) {
+		return _user$project$Main$printWord(
+			_user$project$Main$toWord(_p1));
+	});
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
 		_elm_lang$html$Html$div,
@@ -8893,24 +8913,13 @@ var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProg
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$p,
+				_elm_lang$html$Html$ul,
 				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(
-						_elm_lang$core$Basics$toString(
-							_user$project$Main$matchText(_user$project$Main$items))),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					_user$project$Main$lines(
-						_user$project$Main$matchSubMatches(_user$project$Main$items))),
-				_1: {ctor: '[]'}
-			}
+				function (_p2) {
+					return _user$project$Main$printWords(
+						_user$project$Main$parse(_p2));
+				}(_user$project$Main$matches)),
+			_1: {ctor: '[]'}
 		}));
 var _user$project$Main$Msg = {ctor: 'Msg'};
 
