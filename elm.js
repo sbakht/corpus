@@ -8866,6 +8866,35 @@ var _user$project$Main$printWord = function (w) {
 			_1: {ctor: '[]'}
 		});
 };
+var _user$project$Main$empty = _elm_lang$html$Html$text('');
+var _user$project$Main$or = _elm_lang$core$Maybe$withDefault;
+var _user$project$Main$seqM = function (xs) {
+	var go = F2(
+		function (m, accum) {
+			if (_elm_lang$core$Native_Utils.eq(m, _elm_lang$core$Maybe$Nothing) || _elm_lang$core$Native_Utils.eq(accum, _elm_lang$core$Maybe$Nothing)) {
+				return _elm_lang$core$Maybe$Nothing;
+			} else {
+				var _p0 = m;
+				if (_p0.ctor === 'Nothing') {
+					return _elm_lang$core$Maybe$Nothing;
+				} else {
+					return A2(
+						_elm_lang$core$Maybe$map,
+						F2(
+							function (x, y) {
+								return {ctor: '::', _0: x, _1: y};
+							})(_p0._0),
+						accum);
+				}
+			}
+		});
+	return A3(
+		_elm_lang$core$List$foldr,
+		go,
+		_elm_lang$core$Maybe$Just(
+			{ctor: '[]'}),
+		xs);
+};
 var _user$project$Main$parse = _elm_lang$core$List$map(
 	function (_) {
 		return _.submatches;
@@ -8887,24 +8916,28 @@ var _user$project$Main$Word = F3(
 		return {location: a, transliteration: b, translation: c};
 	});
 var _user$project$Main$mkWord = function (s) {
-	var _p0 = s;
-	if ((((_p0.ctor === '::') && (_p0._1.ctor === '::')) && (_p0._1._1.ctor === '::')) && (_p0._1._1._1.ctor === '[]')) {
-		return A3(_user$project$Main$Word, _p0._0, _p0._1._0, _p0._1._1._0);
+	var _p1 = s;
+	if ((((_p1.ctor === '::') && (_p1._1.ctor === '::')) && (_p1._1._1.ctor === '::')) && (_p1._1._1._1.ctor === '[]')) {
+		return A3(_user$project$Main$Word, _p1._0, _p1._1._0, _p1._1._1._0);
 	} else {
 		return A3(_user$project$Main$Word, '', '', '');
 	}
 };
-var _user$project$Main$toWord = function (xs) {
-	return _user$project$Main$mkWord(
-		A2(
-			_elm_lang$core$List$map,
-			_elm_lang$core$Maybe$withDefault(''),
-			xs));
+var _user$project$Main$toWord = function (_p2) {
+	return A2(
+		_elm_lang$core$Maybe$map,
+		_user$project$Main$mkWord,
+		_user$project$Main$seqM(_p2));
 };
 var _user$project$Main$printWords = _elm_lang$core$List$map(
-	function (_p1) {
-		return _user$project$Main$printWord(
-			_user$project$Main$toWord(_p1));
+	function (_p3) {
+		return A2(
+			_user$project$Main$or,
+			_user$project$Main$empty,
+			A2(
+				_elm_lang$core$Maybe$map,
+				_user$project$Main$printWord,
+				_user$project$Main$toWord(_p3)));
 	});
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
@@ -8915,9 +8948,9 @@ var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProg
 			_0: A2(
 				_elm_lang$html$Html$ul,
 				{ctor: '[]'},
-				function (_p2) {
+				function (_p4) {
 					return _user$project$Main$printWords(
-						_user$project$Main$parse(_p2));
+						_user$project$Main$parse(_p4));
 				}(_user$project$Main$matches)),
 			_1: {ctor: '[]'}
 		}));

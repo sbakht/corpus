@@ -1,7 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (text, div, p, span, Html, li, ul)
-import List exposing (map)
+import List exposing (map, foldr)
 import String exposing (concat)
 import Regex exposing (..)
 import Maybe exposing (withDefault)
@@ -19,6 +19,10 @@ type alias Word =
     }
 
 
+type alias PossibleWord =
+    List (Maybe String)
+
+
 wordRegex : Regex
 wordRegex =
     regex <|
@@ -33,7 +37,7 @@ matches =
     find All wordRegex data
 
 
-parse : List Match -> List (List (Maybe String))
+parse : List Match -> List PossibleWord
 parse =
     map .submatches
 
@@ -48,9 +52,36 @@ mkWord s =
             Word "" "" ""
 
 
-toWord : List (Maybe String) -> Word
-toWord xs =
-    mkWord (map (withDefault "") xs)
+toWord : List (Maybe String) -> Maybe Word
+toWord =
+    Maybe.map mkWord << seqM
+
+
+seqM : List (Maybe a) -> Maybe (List a)
+seqM xs =
+    let
+        go m accum =
+            if m == Nothing || accum == Nothing then
+                Nothing
+            else
+                case m of
+                    Nothing ->
+                        Nothing
+
+                    Just x ->
+                        Maybe.map ((::) x) accum
+    in
+        foldr go (Just []) xs
+
+
+or : a -> Maybe a -> a
+or =
+    withDefault
+
+
+empty : Html Msg
+empty =
+    text ""
 
 
 
@@ -67,9 +98,9 @@ printWord w =
     li [] [ span [] [ toSpan w.location, toSpan w.transliteration, toSpan w.translation ] ]
 
 
-printWords : List (List (Maybe String)) -> List (Html Msg)
+printWords : List PossibleWord -> List (Html Msg)
 printWords =
-    map (printWord << toWord)
+    map (or empty << Maybe.map printWord << toWord)
 
 
 main =
