@@ -9180,7 +9180,7 @@ var _elm_tools$parser$Parser$AtLeast = function (a) {
 var _elm_tools$parser$Parser$zeroOrMore = _elm_tools$parser$Parser$AtLeast(0);
 var _elm_tools$parser$Parser$oneOrMore = _elm_tools$parser$Parser$AtLeast(1);
 
-var _user$project$Main$data = '\n<table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(7:57:14)</span> <i class=\"ab\">suq\'nāhu</i></td><td class=\"c2\"><a name=\"(7:57:14)\" href=\"wordmorphology.jsp?location=(7:57:14)\">We drive them</a></td><td class=\"c3\"> حَتَّىٰ إِذَا أَقَلَّتْ سَحَابًا ثِقَالًا <span class=\"auu\">سُقْنَاهُ</span> لِبَلَدٍ مَيِّتٍ فَأَنْزَلْنَا بِهِ الْمَاءَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(8:6:7)</span> <i class=\"ab\">yusāqūna</i></td><td class=\"c2\"><a name=\"(8:6:7)\" href=\"wordmorphology.jsp?location=(8:6:7)\">they were driven</a></td><td class=\"c3\"> كَأَنَّمَا <span class=\"auu\">يُسَاقُونَ</span> إِلَى الْمَوْتِ وَهُمْ يَنْظُرُونَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(19:86:1)</span> <i class=\"ab\">wanasūqu</i></td><td class=\"c2\"><a name=\"(19:86:1)\" href=\"wordmorphology.jsp?location=(19:86:1)\">And We will drive</a></td><td class=\"c3\"> <span class=\"auu\">وَنَسُوقُ</span> الْمُجْرِمِينَ إِلَىٰ جَهَنَّمَ وِرْدًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(32:27:4)</span> <i class=\"ab\">nasūqu</i></td><td class=\"c2\"><a name=\"(32:27:4)\" href=\"wordmorphology.jsp?location=(32:27:4)\">drive</a></td><td class=\"c3\"> أَوَلَمْ يَرَوْا أَنَّا <span class=\"auu\">نَسُوقُ</span> الْمَاءَ إِلَى الْأَرْضِ الْجُرُزِ فَنُخْرِجُ بِهِ زَرْعًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(35:9:7)</span> <i class=\"ab\">fasuq\'nāhu</i></td><td class=\"c2\"><a name=\"(35:9:7)\" href=\"wordmorphology.jsp?location=(35:9:7)\">and We drive them</a></td><td class=\"c3\"> وَاللَّهُ الَّذِي أَرْسَلَ الرِّيَاحَ فَتُثِيرُ سَحَابًا <span class=\"auu\">فَسُقْنَاهُ</span> إِلَىٰ بَلَدٍ مَيِّتٍ</td></tr><tr><td class=\"c1\"><span class=\"l\">(39:71:1)</span> <i class=\"ab\">wasīqa</i></td><td class=\"c2\"><a name=\"(39:71:1)\" href=\"wordmorphology.jsp?location=(39:71:1)\">And (will) be driven</a></td><td class=\"c3\"> <span class=\"auu\">وَسِيقَ</span> الَّذِينَ كَفَرُوا إِلَىٰ جَهَنَّمَ زُمَرًا</td></tr><tr><td class=\"c1\"><span class=\"l\">(39:73:1)</span> <i class=\"ab\">wasīqa</i></td><td class=\"c2\"><a name=\"(39:73:1)\" href=\"wordmorphology.jsp?location=(39:73:1)\">And (will) be driven</a></td><td class=\"c3\"> <span class=\"auu\">وَسِيقَ</span> الَّذِينَ اتَّقَوْا رَبَّهُمْ إِلَى الْجَنَّةِ زُمَرًا</td></tr></tbody></table>\n';
+var _user$project$Main$data = '\n    <h4 class=\"dxe\">Verb (form II) - to name</h4>\n    <table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(3:36:16)</span> <i class=\"ab\">sammaytuhā</i></td><td class=\"c2\"><a name=\"(3:36:16)\" href=\"wordmorphology.jsp?location=(3:36:16)\">[I] (have) named her</a></td><td class=\"c3\"> وَإِنِّي <span class=\"auu\">سَمَّيْتُهَا</span> مَرْيَمَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(7:71:12)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(7:71:12)\" href=\"wordmorphology.jsp?location=(7:71:12)\">you have named them </a></td><td class=\"c3\"> أَتُجَادِلُونَنِي فِي أَسْمَاءٍ <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(12:40:7)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(12:40:7)\" href=\"wordmorphology.jsp?location=(12:40:7)\">which you have named them</a></td><td class=\"c3\"> مَا تَعْبُدُونَ مِنْ دُونِهِ إِلَّا أَسْمَاءً <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(13:33:13)</span> <i class=\"ab\">sammūhum</i></td><td class=\"c2\"><a name=\"(13:33:13)\" href=\"wordmorphology.jsp?location=(13:33:13)\">Name them</a></td><td class=\"c3\"> وَجَعَلُوا لِلَّهِ شُرَكَاءَ قُلْ <span class=\"auu\">سَمُّوهُمْ</span></td></tr><tr><td class=\"c1\"><span class=\"l\">(22:78:19)</span> <i class=\"ab\">sammākumu</i></td><td class=\"c2\"><a name=\"(22:78:19)\" href=\"wordmorphology.jsp?location=(22:78:19)\">named you</a></td><td class=\"c3\"> هُوَ <span class=\"auu\">سَمَّاكُمُ</span> الْمُسْلِمِينَ مِنْ قَبْلُ وَفِي هَٰذَا</td></tr><tr><td class=\"c1\"><span class=\"l\">(53:23:5)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(53:23:5)\" href=\"wordmorphology.jsp?location=(53:23:5)\">you have named them</a></td><td class=\"c3\"> إِنْ هِيَ إِلَّا أَسْمَاءٌ <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(53:27:6)</span> <i class=\"ab\">layusammūna</i></td><td class=\"c2\"><a name=\"(53:27:6)\" href=\"wordmorphology.jsp?location=(53:27:6)\">surely they name</a></td><td class=\"c3\"> إِنَّ الَّذِينَ لَا يُؤْمِنُونَ بِالْآخِرَةِ <span class=\"auu\">لَيُسَمُّونَ</span> الْمَلَائِكَةَ تَسْمِيَةَ الْأُنْثَىٰ</td></tr><tr><td class=\"c1\"><span class=\"l\">(76:18:3)</span> <i class=\"ab\">tusammā</i></td><td class=\"c2\"><a name=\"(76:18:3)\" href=\"wordmorphology.jsp?location=(76:18:3)\">named</a></td><td class=\"c3\"> عَيْنًا فِيهَا <span class=\"auu\">تُسَمَّىٰ</span> سَلْسَبِيلًا</td></tr></tbody></table>\n    <h4 class=\"dxe\">Noun</h4>\n    <table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(19:7:12)</span> <i class=\"ab\">samiyyan</i></td><td class=\"c2\"><a name=\"(19:7:12)\" href=\"wordmorphology.jsp?location=(19:7:12)\">(this) name</a></td><td class=\"c3\"> يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ بِغُلَامٍ اسْمُهُ يَحْيَىٰ لَمْ نَجْعَلْ لَهُ مِنْ قَبْلُ <span class=\"auu\">سَمِيًّا</span></td></tr><tr><td class=\"c1\"><span class=\"l\">(19:65:12)</span> <i class=\"ab\">samiyyan</i></td><td class=\"c2\"><a name=\"(19:65:12)\" href=\"wordmorphology.jsp?location=(19:65:12)\">any similarity</a></td><td class=\"c3\"> فَاعْبُدْهُ وَاصْطَبِرْ لِعِبَادَتِهِ هَلْ تَعْلَمُ لَهُ <span class=\"auu\">سَمِيًّا</span></td></tr></tbody></table>\n    ';
 var _user$project$Main$toSpan = function (x) {
 	return A2(
 		_elm_lang$html$Html$span,
@@ -9288,6 +9288,14 @@ var _user$project$Main$parse = _elm_lang$core$List$map(
 	function (_) {
 		return _.submatches;
 	});
+var _user$project$Main$tables = A2(
+	_elm_lang$core$Debug$log,
+	'tables',
+	A3(
+		_elm_lang$core$Regex$find,
+		_elm_lang$core$Regex$All,
+		_elm_lang$core$Regex$regex('<table .*>.*?</table>?'),
+		_user$project$Main$data));
 var _user$project$Main$wordRegex = _elm_lang$core$Regex$regex(
 	_elm_lang$core$String$concat(
 		{
@@ -9303,7 +9311,9 @@ var _user$project$Main$wordRegex = _elm_lang$core$Regex$regex(
 				}
 			}
 		}));
-var _user$project$Main$matches = A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Main$wordRegex, _user$project$Main$data);
+var _user$project$Main$matches = function (x) {
+	return A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Main$wordRegex, x);
+};
 var _user$project$Main$Word = F4(
 	function (a, b, c, d) {
 		return {location: a, transliteration: b, translation: c, arabic: d};
@@ -9332,16 +9342,23 @@ var _user$project$Main$toWord = function (_p4) {
 		_user$project$Main$mkWord,
 		_user$project$Main$seqM(_p4));
 };
-var _user$project$Main$printWords = _elm_lang$core$List$map(
-	function (_p5) {
-		return A2(
-			_user$project$Main$or,
-			_user$project$Main$empty,
-			A2(
-				_elm_lang$core$Maybe$map,
-				_user$project$Main$printWord,
-				_user$project$Main$toWord(_p5)));
-	});
+var _user$project$Main$printWords = function (_p5) {
+	return A2(
+		_elm_lang$html$Html$ul,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			function (_p6) {
+				return A2(
+					_user$project$Main$or,
+					_user$project$Main$empty,
+					A2(
+						_elm_lang$core$Maybe$map,
+						_user$project$Main$printWord,
+						_user$project$Main$toWord(_p6)));
+			},
+			_p5));
+};
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
 		_elm_lang$html$Html$div,
@@ -9349,12 +9366,19 @@ var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProg
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$ul,
+				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				function (_p6) {
-					return _user$project$Main$printWords(
-						_user$project$Main$parse(_p6));
-				}(_user$project$Main$matches)),
+				A2(
+					_elm_lang$core$List$map,
+					function (_p7) {
+						return _user$project$Main$printWords(
+							_user$project$Main$parse(
+								_user$project$Main$matches(
+									function (_) {
+										return _.match;
+									}(_p7))));
+					},
+					_user$project$Main$tables)),
 			_1: {ctor: '[]'}
 		}));
 var _user$project$Main$Msg = {ctor: 'Msg'};
