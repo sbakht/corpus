@@ -41,6 +41,11 @@ wordRegex =
             ]
 
 
+titles : List Match
+titles =
+    find All (regex "<h4 class=\"dxe\">(.+?)</h4>") data
+
+
 tables : List Match
 tables =
     Debug.log "tables" <| find All (regex "<table .*>.*?</table>?") data
@@ -117,14 +122,22 @@ printWord w =
     li [] [ span [] [ toSpan w.location, toSpan w.transliteration, toSpan w.translation, arabicSpan w.arabic ] ]
 
 
-printWords : List PossibleWord -> Html Msg
-printWords =
-    ul [] << map (or empty << Maybe.map printWord << toWord)
+printWords : String -> List PossibleWord -> Html Msg
+printWords title words =
+    div []
+        [ p [] [ text title ]
+        , ul [] << map (or empty << Maybe.map printWord << toWord) <| words
+        ]
+
+
+allTitles : List String
+allTitles =
+    map (concat << map (or "") << .submatches) titles
 
 
 main =
     div []
-        [ div [] (map (printWords << parse << matches << .match) <| tables)
+        [ div [] (List.map2 printWords allTitles << map (parse << matches << .match) <| tables)
         ]
 
 

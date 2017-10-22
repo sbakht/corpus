@@ -9296,6 +9296,23 @@ var _user$project$Main$tables = A2(
 		_elm_lang$core$Regex$All,
 		_elm_lang$core$Regex$regex('<table .*>.*?</table>?'),
 		_user$project$Main$data));
+var _user$project$Main$titles = A3(
+	_elm_lang$core$Regex$find,
+	_elm_lang$core$Regex$All,
+	_elm_lang$core$Regex$regex('<h4 class=\"dxe\">(.+?)</h4>'),
+	_user$project$Main$data);
+var _user$project$Main$allTitles = A2(
+	_elm_lang$core$List$map,
+	function (_p3) {
+		return _elm_lang$core$String$concat(
+			A2(
+				_elm_lang$core$List$map,
+				_user$project$Main$or(''),
+				function (_) {
+					return _.submatches;
+				}(_p3)));
+	},
+	_user$project$Main$titles);
 var _user$project$Main$wordRegex = _elm_lang$core$Regex$regex(
 	_elm_lang$core$String$concat(
 		{
@@ -9319,14 +9336,14 @@ var _user$project$Main$Word = F4(
 		return {location: a, transliteration: b, translation: c, arabic: d};
 	});
 var _user$project$Main$mkWord = function (s) {
-	var _p3 = s;
-	if (((((((_p3.ctor === '::') && (_p3._1.ctor === '::')) && (_p3._1._1.ctor === '::')) && (_p3._1._1._1.ctor === '::')) && (_p3._1._1._1._1.ctor === '::')) && (_p3._1._1._1._1._1.ctor === '::')) && (_p3._1._1._1._1._1._1.ctor === '[]')) {
+	var _p4 = s;
+	if (((((((_p4.ctor === '::') && (_p4._1.ctor === '::')) && (_p4._1._1.ctor === '::')) && (_p4._1._1._1.ctor === '::')) && (_p4._1._1._1._1.ctor === '::')) && (_p4._1._1._1._1._1.ctor === '::')) && (_p4._1._1._1._1._1._1.ctor === '[]')) {
 		return A4(
 			_user$project$Main$Word,
-			_p3._0,
-			_p3._1._0,
-			_p3._1._1._0,
-			{ctor: '_Tuple3', _0: _p3._1._1._1._0, _1: _p3._1._1._1._1._0, _2: _p3._1._1._1._1._1._0});
+			_p4._0,
+			_p4._1._0,
+			_p4._1._1._0,
+			{ctor: '_Tuple3', _0: _p4._1._1._1._0, _1: _p4._1._1._1._1._0, _2: _p4._1._1._1._1._1._0});
 	} else {
 		return A4(
 			_user$project$Main$Word,
@@ -9336,29 +9353,50 @@ var _user$project$Main$mkWord = function (s) {
 			{ctor: '_Tuple3', _0: '', _1: '', _2: ''});
 	}
 };
-var _user$project$Main$toWord = function (_p4) {
+var _user$project$Main$toWord = function (_p5) {
 	return A2(
 		_elm_lang$core$Maybe$map,
 		_user$project$Main$mkWord,
-		_user$project$Main$seqM(_p4));
+		_user$project$Main$seqM(_p5));
 };
-var _user$project$Main$printWords = function (_p5) {
-	return A2(
-		_elm_lang$html$Html$ul,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			function (_p6) {
-				return A2(
-					_user$project$Main$or,
-					_user$project$Main$empty,
-					A2(
-						_elm_lang$core$Maybe$map,
-						_user$project$Main$printWord,
-						_user$project$Main$toWord(_p6)));
-			},
-			_p5));
-};
+var _user$project$Main$printWords = F2(
+	function (title, words) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(title),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: function (_p6) {
+						return A2(
+							_elm_lang$html$Html$ul,
+							{ctor: '[]'},
+							A2(
+								_elm_lang$core$List$map,
+								function (_p7) {
+									return A2(
+										_user$project$Main$or,
+										_user$project$Main$empty,
+										A2(
+											_elm_lang$core$Maybe$map,
+											_user$project$Main$printWord,
+											_user$project$Main$toWord(_p7)));
+								},
+								_p6));
+					}(words),
+					_1: {ctor: '[]'}
+				}
+			});
+	});
 var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProgram(
 	A2(
 		_elm_lang$html$Html$div,
@@ -9368,17 +9406,22 @@ var _user$project$Main$main = _elm_lang$virtual_dom$Native_VirtualDom.staticProg
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				A2(
-					_elm_lang$core$List$map,
-					function (_p7) {
-						return _user$project$Main$printWords(
-							_user$project$Main$parse(
-								_user$project$Main$matches(
-									function (_) {
-										return _.match;
-									}(_p7))));
-					},
-					_user$project$Main$tables)),
+				function (_p8) {
+					return A3(
+						_elm_lang$core$List$map2,
+						_user$project$Main$printWords,
+						_user$project$Main$allTitles,
+						A2(
+							_elm_lang$core$List$map,
+							function (_p9) {
+								return _user$project$Main$parse(
+									_user$project$Main$matches(
+										function (_) {
+											return _.match;
+										}(_p9)));
+							},
+							_p8));
+				}(_user$project$Main$tables)),
 			_1: {ctor: '[]'}
 		}));
 var _user$project$Main$Msg = {ctor: 'Msg'};
