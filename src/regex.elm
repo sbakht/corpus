@@ -1,6 +1,7 @@
 module Main exposing (..)
 
 import Html exposing (text, div, p, span, Html, li, ul)
+import Html.Attributes exposing (style)
 import List exposing (map, foldr)
 import String exposing (concat)
 import Regex exposing (..)
@@ -12,10 +13,15 @@ type Msg
     = Msg
 
 
+type alias Arabic =
+    ( String, String, String )
+
+
 type alias Word =
     { location : String
     , transliteration : String
     , translation : String
+    , arabic : Arabic
     }
 
 
@@ -29,6 +35,9 @@ wordRegex =
         concat <|
             [ "<td class=\"c1\"><span class=\"l\">(.+?)</span>.*?<i class=\"ab\">(.+?)</i></td>"
             , "<td class=\"c2\"><a .*?>(.+?)</a></td>"
+            , "<td class=\"c3\">(.*?)<span class=\"auu\">(.+?)</span>(.*?)</td>"
+
+            --, "<td class=\"c3\">(.*?)</td>"
             ]
 
 
@@ -45,11 +54,11 @@ parse =
 mkWord : List String -> Word
 mkWord s =
     case s of
-        [ loc, lit, tran ] ->
-            Word loc lit tran
+        [ loc, lit, tran, ar1, ar2, ar3 ] ->
+            Word loc lit tran ( ar1, ar2, ar3 )
 
         otherwise ->
-            Word "" "" ""
+            Word "" "" "" ( "", "", "" )
 
 
 toWord : List (Maybe String) -> Maybe Word
@@ -93,9 +102,14 @@ toSpan x =
     span [] [ text x ]
 
 
+arabicSpan : Arabic -> Html Msg
+arabicSpan ( s1, s2, s3 ) =
+    span [] [ toSpan s1, span [ style [ ( "color", "red" ) ] ] [ text s2 ], toSpan s3 ]
+
+
 printWord : Word -> Html Msg
 printWord w =
-    li [] [ span [] [ toSpan w.location, toSpan w.transliteration, toSpan w.translation ] ]
+    li [] [ span [] [ toSpan w.location, toSpan w.transliteration, toSpan w.translation, arabicSpan w.arabic ] ]
 
 
 printWords : List PossibleWord -> List (Html Msg)
