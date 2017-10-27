@@ -2,15 +2,22 @@ module Main exposing (..)
 
 import Html exposing (text, div, p, span, Html, li, ul)
 import Html.Attributes exposing (style)
+import Html.Events exposing (..)
 import List exposing (map, foldr)
 import String exposing (concat)
 import Regex exposing (..)
 import Maybe exposing (withDefault)
 import Parser exposing (Parser)
+import Http exposing (..)
 
 
-type Msg
-    = Msg
+main =
+    Html.program
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
 
 
 type alias Arabic =
@@ -41,14 +48,28 @@ wordRegex =
             ]
 
 
-titles : List Match
-titles =
+req : Request String
+req =
+    Http.getString "arabic.html"
+
+
+
+--Http.getString "http://corpus.quran.com/qurandictionary.jsp?"
+
+
+ajax : Cmd Msg
+ajax =
+    Http.send Got req
+
+
+titles : String -> List Match
+titles data =
     find All (regex "<h4 class=\"dxe\">(.+?)</h4>") data
 
 
-tables : List Match
-tables =
-    Debug.log "tables" <| find All (regex "<table .*>.*?</table>?") data
+tables : String -> List Match
+tables data =
+    Debug.log "tables" <| find All (regex "<table class=\"taf\".*?>.*?</table>?") data
 
 
 matches : String -> List Match
@@ -103,8 +124,40 @@ empty =
     text ""
 
 
+type alias Model =
+    String
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( data, ajax )
+
+
+type Msg
+    = Getting
+    | Got (Result Http.Error String)
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        Getting ->
+            ( model, ajax )
+
+        Got (Ok x) ->
+            ( x, Cmd.none )
+
+        Got (Err _) ->
+            ( "oh no", Cmd.none )
+
+
 
 --------------------------------------------------
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
 
 
 toSpan : String -> Html Msg
@@ -125,19 +178,20 @@ printWord w =
 printWords : String -> List PossibleWord -> Html Msg
 printWords title words =
     div []
-        [ p [] [ text title ]
+        [ p [] [ text <| Debug.log "title" <| title ]
         , ul [] << map (or empty << Maybe.map printWord << toWord) <| words
         ]
 
 
-allTitles : List String
-allTitles =
-    map (concat << map (or "") << .submatches) titles
+allTitles : String -> List String
+allTitles model =
+    map (concat << map (or "") << .submatches) (titles model)
 
 
-main =
+view : Model -> Html Msg
+view model =
     div []
-        [ div [] (List.map2 printWords allTitles << map (parse << matches << .match) <| tables)
+        [ div [] (List.map2 printWords (allTitles model) << map (parse << matches << .match) <| tables model)
         ]
 
 
