@@ -10068,7 +10068,76 @@ var _elm_tools$parser$Parser$AtLeast = function (a) {
 var _elm_tools$parser$Parser$zeroOrMore = _elm_tools$parser$Parser$AtLeast(0);
 var _elm_tools$parser$Parser$oneOrMore = _elm_tools$parser$Parser$AtLeast(1);
 
-var _user$project$Main$data = '\n    <h4 class=\"dxe\">Verb (form II) - to name</h4>\n    <table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(3:36:16)</span> <i class=\"ab\">sammaytuhā</i></td><td class=\"c2\"><a name=\"(3:36:16)\" href=\"wordmorphology.jsp?location=(3:36:16)\">[I] (have) named her</a></td><td class=\"c3\"> وَإِنِّي <span class=\"auu\">سَمَّيْتُهَا</span> مَرْيَمَ</td></tr><tr><td class=\"c1\"><span class=\"l\">(7:71:12)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(7:71:12)\" href=\"wordmorphology.jsp?location=(7:71:12)\">you have named them </a></td><td class=\"c3\"> أَتُجَادِلُونَنِي فِي أَسْمَاءٍ <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(12:40:7)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(12:40:7)\" href=\"wordmorphology.jsp?location=(12:40:7)\">which you have named them</a></td><td class=\"c3\"> مَا تَعْبُدُونَ مِنْ دُونِهِ إِلَّا أَسْمَاءً <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(13:33:13)</span> <i class=\"ab\">sammūhum</i></td><td class=\"c2\"><a name=\"(13:33:13)\" href=\"wordmorphology.jsp?location=(13:33:13)\">Name them</a></td><td class=\"c3\"> وَجَعَلُوا لِلَّهِ شُرَكَاءَ قُلْ <span class=\"auu\">سَمُّوهُمْ</span></td></tr><tr><td class=\"c1\"><span class=\"l\">(22:78:19)</span> <i class=\"ab\">sammākumu</i></td><td class=\"c2\"><a name=\"(22:78:19)\" href=\"wordmorphology.jsp?location=(22:78:19)\">named you</a></td><td class=\"c3\"> هُوَ <span class=\"auu\">سَمَّاكُمُ</span> الْمُسْلِمِينَ مِنْ قَبْلُ وَفِي هَٰذَا</td></tr><tr><td class=\"c1\"><span class=\"l\">(53:23:5)</span> <i class=\"ab\">sammaytumūhā</i></td><td class=\"c2\"><a name=\"(53:23:5)\" href=\"wordmorphology.jsp?location=(53:23:5)\">you have named them</a></td><td class=\"c3\"> إِنْ هِيَ إِلَّا أَسْمَاءٌ <span class=\"auu\">سَمَّيْتُمُوهَا</span> أَنْتُمْ وَآبَاؤُكُمْ</td></tr><tr><td class=\"c1\"><span class=\"l\">(53:27:6)</span> <i class=\"ab\">layusammūna</i></td><td class=\"c2\"><a name=\"(53:27:6)\" href=\"wordmorphology.jsp?location=(53:27:6)\">surely they name</a></td><td class=\"c3\"> إِنَّ الَّذِينَ لَا يُؤْمِنُونَ بِالْآخِرَةِ <span class=\"auu\">لَيُسَمُّونَ</span> الْمَلَائِكَةَ تَسْمِيَةَ الْأُنْثَىٰ</td></tr><tr><td class=\"c1\"><span class=\"l\">(76:18:3)</span> <i class=\"ab\">tusammā</i></td><td class=\"c2\"><a name=\"(76:18:3)\" href=\"wordmorphology.jsp?location=(76:18:3)\">named</a></td><td class=\"c3\"> عَيْنًا فِيهَا <span class=\"auu\">تُسَمَّىٰ</span> سَلْسَبِيلًا</td></tr></tbody></table>\n    <h4 class=\"dxe\">Noun</h4>\n    <table class=\"taf\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tbody><tr><td class=\"c1\"><span class=\"l\">(19:7:12)</span> <i class=\"ab\">samiyyan</i></td><td class=\"c2\"><a name=\"(19:7:12)\" href=\"wordmorphology.jsp?location=(19:7:12)\">(this) name</a></td><td class=\"c3\"> يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ بِغُلَامٍ اسْمُهُ يَحْيَىٰ لَمْ نَجْعَلْ لَهُ مِنْ قَبْلُ <span class=\"auu\">سَمِيًّا</span></td></tr><tr><td class=\"c1\"><span class=\"l\">(19:65:12)</span> <i class=\"ab\">samiyyan</i></td><td class=\"c2\"><a name=\"(19:65:12)\" href=\"wordmorphology.jsp?location=(19:65:12)\">any similarity</a></td><td class=\"c3\"> فَاعْبُدْهُ وَاصْطَبِرْ لِعِبَادَتِهِ هَلْ تَعْلَمُ لَهُ <span class=\"auu\">سَمِيًّا</span></td></tr></tbody></table>\n    ';
+var _user$project$Helpers$zipWith = _elm_lang$core$List$map2;
+var _user$project$Helpers$or = _elm_lang$core$Maybe$withDefault;
+var _user$project$Helpers$seqM = function (xs) {
+	var go = F2(
+		function (m, accum) {
+			if (_elm_lang$core$Native_Utils.eq(m, _elm_lang$core$Maybe$Nothing) || _elm_lang$core$Native_Utils.eq(accum, _elm_lang$core$Maybe$Nothing)) {
+				return _elm_lang$core$Maybe$Nothing;
+			} else {
+				var _p0 = m;
+				if (_p0.ctor === 'Nothing') {
+					return _elm_lang$core$Maybe$Nothing;
+				} else {
+					return A2(
+						_elm_lang$core$Maybe$map,
+						F2(
+							function (x, y) {
+								return {ctor: '::', _0: x, _1: y};
+							})(_p0._0),
+						accum);
+				}
+			}
+		});
+	return A3(
+		_elm_lang$core$List$foldr,
+		go,
+		_elm_lang$core$Maybe$Just(
+			{ctor: '[]'}),
+		xs);
+};
+
+var _user$project$Parse$parse = _elm_lang$core$List$map(
+	function (_) {
+		return _.submatches;
+	});
+var _user$project$Parse$tables = function (data) {
+	return A2(
+		_elm_lang$core$Debug$log,
+		'tables',
+		A3(
+			_elm_lang$core$Regex$find,
+			_elm_lang$core$Regex$All,
+			_elm_lang$core$Regex$regex('<table class=\"taf\".*?>.*?</table>?'),
+			data));
+};
+var _user$project$Parse$titles = function (data) {
+	return A3(
+		_elm_lang$core$Regex$find,
+		_elm_lang$core$Regex$All,
+		_elm_lang$core$Regex$regex('<h4 class=\"dxe\">(.+?)</h4>'),
+		data);
+};
+var _user$project$Parse$wordRegex = _elm_lang$core$Regex$regex(
+	_elm_lang$core$String$concat(
+		{
+			ctor: '::',
+			_0: '<td class=\"c1\"><span class=\"l\">(.+?)</span>.*?<i class=\"ab\">(.+?)</i></td>',
+			_1: {
+				ctor: '::',
+				_0: '<td class=\"c2\"><a .*?>(.+?)</a></td>',
+				_1: {
+					ctor: '::',
+					_0: '<td class=\"c3\">(.*?)<span class=\"auu\">(.+?)</span>(.*?)</td>',
+					_1: {ctor: '[]'}
+				}
+			}
+		}));
+var _user$project$Parse$matches = function (x) {
+	return A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Parse$wordRegex, x);
+};
+
 var _user$project$Main$toSpan = function (x) {
 	return A2(
 		_elm_lang$html$Html$span,
@@ -10079,14 +10148,41 @@ var _user$project$Main$toSpan = function (x) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Main$arabicSpan = function (_p0) {
+var _user$project$Main$locSpan = function (_p0) {
 	var _p1 = _p0;
 	return A2(
 		_elm_lang$html$Html$span,
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: _user$project$Main$toSpan(_p1._0),
+			_0: _elm_lang$html$Html$text(
+				A2(
+					_elm_lang$core$String$join,
+					':',
+					{
+						ctor: '::',
+						_0: _p1._0,
+						_1: {
+							ctor: '::',
+							_0: _p1._1,
+							_1: {
+								ctor: '::',
+								_0: _p1._2,
+								_1: {ctor: '[]'}
+							}
+						}
+					})),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Main$arabicSpan = function (_p2) {
+	var _p3 = _p2;
+	return A2(
+		_elm_lang$html$Html$span,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$Main$toSpan(_p3._0),
 			_1: {
 				ctor: '::',
 				_0: A2(
@@ -10103,16 +10199,30 @@ var _user$project$Main$arabicSpan = function (_p0) {
 					},
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(_p1._1),
+						_0: _elm_lang$html$Html$text(_p3._1),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Main$toSpan(_p1._2),
+					_0: _user$project$Main$toSpan(_p3._2),
 					_1: {ctor: '[]'}
 				}
 			}
 		});
+};
+var _user$project$Main$allTitles = function (model) {
+	return A2(
+		_elm_lang$core$List$map,
+		function (_p4) {
+			return _elm_lang$core$String$concat(
+				A2(
+					_elm_lang$core$List$map,
+					_user$project$Helpers$or(''),
+					function (_) {
+						return _.submatches;
+					}(_p4)));
+		},
+		_user$project$Parse$titles(model));
 };
 var _user$project$Main$printWord = function (w) {
 	return A2(
@@ -10125,7 +10235,7 @@ var _user$project$Main$printWord = function (w) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _user$project$Main$toSpan(w.location),
+					_0: _user$project$Main$locSpan(w.location),
 					_1: {
 						ctor: '::',
 						_0: _user$project$Main$toSpan(w.transliteration),
@@ -10146,116 +10256,42 @@ var _user$project$Main$printWord = function (w) {
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Main$empty = _elm_lang$html$Html$text('');
-var _user$project$Main$or = _elm_lang$core$Maybe$withDefault;
-var _user$project$Main$seqM = function (xs) {
-	var go = F2(
-		function (m, accum) {
-			if (_elm_lang$core$Native_Utils.eq(m, _elm_lang$core$Maybe$Nothing) || _elm_lang$core$Native_Utils.eq(accum, _elm_lang$core$Maybe$Nothing)) {
-				return _elm_lang$core$Maybe$Nothing;
-			} else {
-				var _p2 = m;
-				if (_p2.ctor === 'Nothing') {
-					return _elm_lang$core$Maybe$Nothing;
-				} else {
-					return A2(
-						_elm_lang$core$Maybe$map,
-						F2(
-							function (x, y) {
-								return {ctor: '::', _0: x, _1: y};
-							})(_p2._0),
-						accum);
-				}
-			}
-		});
-	return A3(
-		_elm_lang$core$List$foldr,
-		go,
-		_elm_lang$core$Maybe$Just(
-			{ctor: '[]'}),
-		xs);
-};
-var _user$project$Main$parse = _elm_lang$core$List$map(
-	function (_) {
-		return _.submatches;
-	});
-var _user$project$Main$tables = function (data) {
-	return A2(
-		_elm_lang$core$Debug$log,
-		'tables',
-		A3(
-			_elm_lang$core$Regex$find,
-			_elm_lang$core$Regex$All,
-			_elm_lang$core$Regex$regex('<table class=\"taf\".*>.*?</table>?'),
-			data));
-};
-var _user$project$Main$titles = function (data) {
-	return A3(
-		_elm_lang$core$Regex$find,
-		_elm_lang$core$Regex$All,
-		_elm_lang$core$Regex$regex('<h4 class=\"dxe\">(.+?)</h4>'),
-		data);
-};
-var _user$project$Main$allTitles = function (model) {
-	return A2(
-		_elm_lang$core$List$map,
-		function (_p3) {
-			return _elm_lang$core$String$concat(
-				A2(
-					_elm_lang$core$List$map,
-					_user$project$Main$or(''),
-					function (_) {
-						return _.submatches;
-					}(_p3)));
-		},
-		_user$project$Main$titles(model));
+var _user$project$Main$parseLoc = function (x) {
+	var _p5 = A2(_elm_lang$core$String$split, ':', x);
+	if ((((_p5.ctor === '::') && (_p5._1.ctor === '::')) && (_p5._1._1.ctor === '::')) && (_p5._1._1._1.ctor === '[]')) {
+		return {ctor: '_Tuple3', _0: _p5._0, _1: _p5._1._0, _2: _p5._1._1._0};
+	} else {
+		return {ctor: '_Tuple3', _0: '', _1: '', _2: ''};
+	}
 };
 var _user$project$Main$req = _elm_lang$http$Http$getString('arabic.html');
-var _user$project$Main$wordRegex = _elm_lang$core$Regex$regex(
-	_elm_lang$core$String$concat(
-		{
-			ctor: '::',
-			_0: '<td class=\"c1\"><span class=\"l\">(.+?)</span>.*?<i class=\"ab\">(.+?)</i></td>',
-			_1: {
-				ctor: '::',
-				_0: '<td class=\"c2\"><a .*?>(.+?)</a></td>',
-				_1: {
-					ctor: '::',
-					_0: '<td class=\"c3\">(.*?)<span class=\"auu\">(.+?)</span>(.*?)</td>',
-					_1: {ctor: '[]'}
-				}
-			}
-		}));
-var _user$project$Main$matches = function (x) {
-	return A3(_elm_lang$core$Regex$find, _elm_lang$core$Regex$All, _user$project$Main$wordRegex, x);
-};
 var _user$project$Main$Word = F4(
 	function (a, b, c, d) {
 		return {location: a, transliteration: b, translation: c, arabic: d};
 	});
 var _user$project$Main$mkWord = function (s) {
-	var _p4 = s;
-	if (((((((_p4.ctor === '::') && (_p4._1.ctor === '::')) && (_p4._1._1.ctor === '::')) && (_p4._1._1._1.ctor === '::')) && (_p4._1._1._1._1.ctor === '::')) && (_p4._1._1._1._1._1.ctor === '::')) && (_p4._1._1._1._1._1._1.ctor === '[]')) {
+	var _p6 = s;
+	if (((((((_p6.ctor === '::') && (_p6._1.ctor === '::')) && (_p6._1._1.ctor === '::')) && (_p6._1._1._1.ctor === '::')) && (_p6._1._1._1._1.ctor === '::')) && (_p6._1._1._1._1._1.ctor === '::')) && (_p6._1._1._1._1._1._1.ctor === '[]')) {
 		return A4(
 			_user$project$Main$Word,
-			_p4._0,
-			_p4._1._0,
-			_p4._1._1._0,
-			{ctor: '_Tuple3', _0: _p4._1._1._1._0, _1: _p4._1._1._1._1._0, _2: _p4._1._1._1._1._1._0});
+			_user$project$Main$parseLoc(_p6._0),
+			_p6._1._0,
+			_p6._1._1._0,
+			{ctor: '_Tuple3', _0: _p6._1._1._1._0, _1: _p6._1._1._1._1._0, _2: _p6._1._1._1._1._1._0});
 	} else {
 		return A4(
 			_user$project$Main$Word,
-			'',
+			{ctor: '_Tuple3', _0: '', _1: '', _2: ''},
 			'',
 			'',
 			{ctor: '_Tuple3', _0: '', _1: '', _2: ''});
 	}
 };
-var _user$project$Main$toWord = function (_p5) {
+var _user$project$Main$toWord = function (_p7) {
 	return A2(
 		_elm_lang$core$Maybe$map,
 		_user$project$Main$mkWord,
-		_user$project$Main$seqM(_p5));
+		_user$project$Helpers$seqM(_p7));
 };
 var _user$project$Main$printWords = F2(
 	function (title, words) {
@@ -10275,22 +10311,22 @@ var _user$project$Main$printWords = F2(
 					}),
 				_1: {
 					ctor: '::',
-					_0: function (_p6) {
+					_0: function (_p8) {
 						return A2(
 							_elm_lang$html$Html$ul,
 							{ctor: '[]'},
 							A2(
 								_elm_lang$core$List$map,
-								function (_p7) {
+								function (_p9) {
 									return A2(
-										_user$project$Main$or,
-										_user$project$Main$empty,
+										_user$project$Helpers$or,
+										_elm_lang$html$Html$text(''),
 										A2(
 											_elm_lang$core$Maybe$map,
 											_user$project$Main$printWord,
-											_user$project$Main$toWord(_p7)));
+											_user$project$Main$toWord(_p9)));
 								},
-								_p6));
+								_p8));
 					}(words),
 					_1: {ctor: '[]'}
 				}
@@ -10305,39 +10341,39 @@ var _user$project$Main$view = function (model) {
 			_0: A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
-				function (_p8) {
+				function (_p10) {
 					return A3(
-						_elm_lang$core$List$map2,
+						_user$project$Helpers$zipWith,
 						_user$project$Main$printWords,
 						_user$project$Main$allTitles(model),
 						A2(
 							_elm_lang$core$List$map,
-							function (_p9) {
-								return _user$project$Main$parse(
-									_user$project$Main$matches(
+							function (_p11) {
+								return _user$project$Parse$parse(
+									_user$project$Parse$matches(
 										function (_) {
 											return _.match;
-										}(_p9)));
+										}(_p11)));
 							},
-							_p8));
+							_p10));
 				}(
-					_user$project$Main$tables(model))),
+					_user$project$Parse$tables(model))),
 			_1: {ctor: '[]'}
 		});
 };
 var _user$project$Main$Got = function (a) {
 	return {ctor: 'Got', _0: a};
 };
-var _user$project$Main$ajax = A2(_elm_lang$http$Http$send, _user$project$Main$Got, _user$project$Main$req);
-var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$data, _1: _user$project$Main$ajax};
+var _user$project$Main$getHTML = A2(_elm_lang$http$Http$send, _user$project$Main$Got, _user$project$Main$req);
+var _user$project$Main$init = {ctor: '_Tuple2', _0: '', _1: _user$project$Main$getHTML};
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p10 = msg;
-		if (_p10.ctor === 'Getting') {
-			return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$ajax};
+		var _p12 = msg;
+		if (_p12.ctor === 'Getting') {
+			return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$getHTML};
 		} else {
-			if (_p10._0.ctor === 'Ok') {
-				return {ctor: '_Tuple2', _0: _p10._0._0, _1: _elm_lang$core$Platform_Cmd$none};
+			if (_p12._0.ctor === 'Ok') {
+				return {ctor: '_Tuple2', _0: _p12._0._0, _1: _elm_lang$core$Platform_Cmd$none};
 			} else {
 				return {ctor: '_Tuple2', _0: 'oh no', _1: _elm_lang$core$Platform_Cmd$none};
 			}
